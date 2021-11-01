@@ -1,0 +1,22 @@
+[
+  {
+    "img" : "../images/design_thinking.jpg",
+    "alt" : "Design Thinking",
+    "Title" : "Design Thinking"
+  },
+  {
+    "img" : "../images/rapid_prototyping.jpg",
+    "alt" : "Rapid Prototyping",
+    "Title" : "Rapid Prototyping"
+  },
+  {
+    "img" : "../images/solution_architect.jpg",
+    "alt" : "Solution Architect",
+    "Title" : "Solution Architect"
+  },
+  {
+    "img" : "../images/data_science.jpg",
+    "alt" : "Data Science",
+    "Title" : "Data Science"
+  }
+]
