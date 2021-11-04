@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
-import { FaBars } from "react-icons/fa"
-import { menuData } from "../data/MenuData"
+import * as React from "react";
+import { Link } from "gatsby";
+import styled from "styled-components";
+import { FaBars } from "react-icons/fa";
+import { menuData } from "../data/MenuData";
 
 const Header = () => {
   return (
@@ -10,19 +10,17 @@ const Header = () => {
       <NavLogo to="/">A|R</NavLogo>
       <Hamburger></Hamburger>
       <NavMenu>
-        {
-          menuData.map((item, index) => (
-            <NavLink to={item.link} key={index}>
-              {item.title}
-            </NavLink>
-          ))
-        }
+        {menuData.map((item, index) => (
+          <NavLink to={item.link} key={index}>
+            {item.title}
+          </NavLink>
+        ))}
       </NavMenu>
     </Nav>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
 
 const Nav = styled.div`
   background: transparent;
@@ -37,7 +35,7 @@ const Nav = styled.div`
   @media screen and (max-width: 1180px) {
     padding: 0 4px;
   }
-`
+`;
 
 const NavLogo = styled(Link)`
   color: #1d3557;
@@ -51,7 +49,7 @@ const NavLogo = styled(Link)`
   @media screen and (max-width: 768px) {
     padding: 4px;
   }
-`
+`;
 const NavLink = styled(Link)`
   color: #1d3557;
   display: flex;
@@ -60,7 +58,7 @@ const NavLink = styled(Link)`
   padding-left: 40px;
   cursor: pointer;
   text-transform: uppercase;
-`
+`;
 const Hamburger = styled(FaBars)`
   display: none;
 
@@ -74,7 +72,7 @@ const Hamburger = styled(FaBars)`
     cursor: pointer;
     color: #1d3557;
   }
-`
+`;
 const NavMenu = styled.div`
   display: flex;
   align-items: center;
@@ -82,4 +80,4 @@ const NavMenu = styled.div`
   @media screen and (max-width: 768px) {
     display: none;
   }
-`
+`;

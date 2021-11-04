@@ -2,21 +2,22 @@
   {
     "img" : "../images/design_thinking.jpg",
     "alt" : "Design Thinking",
-    "Title" : "Design Thinking"
+    "Title" : "Design Thinking",
+    "Description" : "Empathizing with the narratives behind a problem motivates me to ask \"Why\" and \"What\" before focusing on \"How.\""
   },
   {
-    "img" : "../images/rapid_prototyping.jpg",
-    "alt" : "Rapid Prototyping",
-    "Title" : "Rapid Prototyping"
+    "img" : "../images/lean_startup.jpg",
+    "alt" : "Lean Startup",
+    "Title" : "Passionate about Lean Startup principles to shorten product development cycle and perform rapid prototyping"
   },
   {
     "img" : "../images/solution_architect.jpg",
     "alt" : "Solution Architect",
-    "Title" : "Solution Architect"
+    "Title" : "Passionate about taking empirical approach to deliver scalable solution that merges human centered design with technology and innovation."
   },
   {
     "img" : "../images/data_science.jpg",
     "alt" : "Data Science",
-    "Title" : "Data Science"
+    "Title" : "Full-stack data scientist with expertise in developing and executing AI/ML solutions such as reinforcement learning, and object detection."
   }
 ]
