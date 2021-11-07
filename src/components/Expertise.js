@@ -1,34 +1,86 @@
-import * as React from "react"
-import styled from "styled-components"
+import * as React from "react";
+import styled from "styled-components";
+import { useStaticQuery, graphql } from "gatsby";
 
 const Expertise = () => {
-  return (
-    <ExpertiseContainer>
-      <ExpertiseWrapper>
-        <ExpertiseH1>
-          <ExpertiseSpan>|</ExpertiseSpan>Expertise
-        </ExpertiseH1>
-        <ExpertiseH2>
-          Experienced in solutions delivery—from rapid prototyping to commercialization
-        </ExpertiseH2>
-        <CardContainer>
-          card container
-          <ExpertiseCard>
-            This is a card
-          </ExpertiseCard>
-          <ExpertiseCard>
-            This is a card
-          </ExpertiseCard>
-          <ExpertiseCard>
-            This is a card
-          </ExpertiseCard>
-        </CardContainer>
-      </ExpertiseWrapper>
-    </ExpertiseContainer>
-  )
-}
+  const data = useStaticQuery(graphql`
+    query expertiseQuery {
+      allExpertiseJson {
+        edges {
+          node {
+            Title
+            alt
+            Description
+            img {
+              childrenImageSharp {
+                fluid {
+                  // src
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
-export default Expertise
+  function getExpertise(data) {
+    const expertiseArray = []
+    data.allExpertiseJson.edges.forEach((item, index) => {
+      expertiseArray.push(
+        
+      )
+    });
+  }
+  return (
+    // <StaticQuery
+    //   query = {graphql`
+    //     query expertiseQuery {
+    //       allExpertiseJson {
+    //         edges {
+    //           node {
+    //             Title
+    //             alt
+    //             Description
+    //             img {
+    //               childrenImageSharp {
+    //                 fluid {
+    //                   src
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }      
+    //   `}
+    //   render = {data => (
+
+    //   )}
+    // /> 
+
+    // <ExpertiseContainer>
+    //   <ExpertiseWrapper>
+    //     <ExpertiseH1>
+    //       <ExpertiseSpan>|</ExpertiseSpan>Expertise
+    //     </ExpertiseH1>
+    //     <ExpertiseH2>
+    //       Experienced in solutions delivery—from rapid prototyping to
+    //       commercialization
+    //     </ExpertiseH2>
+    //     <CardContainer>
+    //       card container
+    //       <ExpertiseCard>This is a card</ExpertiseCard>
+    //       <ExpertiseCard>This is a card</ExpertiseCard>
+    //       <ExpertiseCard>This is a card</ExpertiseCard>
+    //     </CardContainer>
+    //   </ExpertiseWrapper>
+    // </ExpertiseContainer>
+  );
+};
+
+export default Expertise;
 
 const ExpertiseContainer = styled.div`
   max-height: 100vh;
@@ -36,17 +88,17 @@ const ExpertiseContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const ExpertiseWrapper = styled.div`
   margin-top: 32px;
   border-top: #707070 1px solid;
-`
+`;
 
 const ExpertiseSpan = styled.span`
   font-weight: 700;
   color: #e63946;
-`
+`;
 
 const ExpertiseH1 = styled.h1`
   color: #1d3557;
@@ -58,7 +110,7 @@ const ExpertiseH1 = styled.h1`
   @media screen and (max-width: 624px) {
     margin-top: 16px;
   }
-`
+`;
 
 const ExpertiseH2 = styled.h2`
   color: #457b9d;
@@ -66,10 +118,29 @@ const ExpertiseH2 = styled.h2`
   line-height: clamp(28px, 4vw, 48px);
   font-weight: 300;
   margin-top: 16px;
-`
+`;
 
 const CardContainer = styled.div`
   flex-grow: 1;
-  background: red;  
-`
-const ExpertiseCard = styled.div``
+  background: red;
+`;
+const ExpertiseCard = styled.div``;
+
+// query MyQuery {
+//   allExpertiseJson {
+//     edges {
+//       node {
+//         Title
+//         alt
+//         Description
+//         img {
+//           childrenImageSharp {
+//             fluid {
+//               src
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

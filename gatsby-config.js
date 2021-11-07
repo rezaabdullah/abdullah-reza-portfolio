@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
     title: "Abdullah Reza Portfolio",
-    description: "Abdullah Reza, a avid learner and mechanical engineer. Passionate about developing data driven solutions to move businesses from red ocean to blue ocean.",
+    description:
+      "Abdullah Reza, a avid learner and mechanical engineer. Passionate about developing data driven solutions to move businesses from red ocean to blue ocean.",
     author: "Abdullah Reza",
   },
   plugins: [
@@ -46,11 +47,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          "IBM Plex Sans",
-          "IBM Plex Mono",
-        ],
-        display: 'swap'
+        fonts: ["IBM Plex Sans", "IBM Plex Mono"],
+        display: "swap",
+      },
+    },
+    "gatsby-transformer-json",
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
       },
     },
   ],
