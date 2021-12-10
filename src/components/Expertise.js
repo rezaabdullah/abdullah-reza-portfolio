@@ -1,6 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
+// import { StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { _getStaticImage } from "gatsby-plugin-image/dist/src/components/static-image.server";
 
 const Expertise = () => {
   const data = useStaticQuery(graphql`
@@ -8,11 +11,11 @@ const Expertise = () => {
       allExpertiseJson {
         edges {
           node {
-            Title
             alt
+            Title
             Description
             img {
-              childrenImageSharp {
+              childImageSharp {
                 fluid {
                   // src
                   ...GatsbyImageSharpFluid
@@ -23,60 +26,40 @@ const Expertise = () => {
         }
       }
     }
-  `)
+  `);
 
   function getExpertise(data) {
-    const expertiseArray = []
+    const expertiseArray = [];
     data.allExpertiseJson.edges.forEach((item, index) => {
       expertiseArray.push(
-        
-      )
+        <div key={index}>
+          src=getImage(item.node.img.childrenImageSharp.fluid.src) fluid=
+          {item.node.img.childrenImageSharp.fluid}
+        </div>
+      );
     });
+    return expertiseArray;
   }
+
   return (
-    // <StaticQuery
-    //   query = {graphql`
-    //     query expertiseQuery {
-    //       allExpertiseJson {
-    //         edges {
-    //           node {
-    //             Title
-    //             alt
-    //             Description
-    //             img {
-    //               childrenImageSharp {
-    //                 fluid {
-    //                   src
-    //                 }
-    //               }
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }      
-    //   `}
-    //   render = {data => (
-
-    //   )}
-    // /> 
-
-    // <ExpertiseContainer>
-    //   <ExpertiseWrapper>
-    //     <ExpertiseH1>
-    //       <ExpertiseSpan>|</ExpertiseSpan>Expertise
-    //     </ExpertiseH1>
-    //     <ExpertiseH2>
-    //       Experienced in solutions delivery—from rapid prototyping to
-    //       commercialization
-    //     </ExpertiseH2>
-    //     <CardContainer>
-    //       card container
-    //       <ExpertiseCard>This is a card</ExpertiseCard>
-    //       <ExpertiseCard>This is a card</ExpertiseCard>
-    //       <ExpertiseCard>This is a card</ExpertiseCard>
-    //     </CardContainer>
-    //   </ExpertiseWrapper>
-    // </ExpertiseContainer>
+    <ExpertiseContainer>
+      <ExpertiseWrapper>
+        <ExpertiseH1>
+          <ExpertiseSpan>|</ExpertiseSpan>Expertise
+        </ExpertiseH1>
+        <ExpertiseH2>
+          Experienced in solutions delivery—from rapid prototyping to
+          commercialization
+        </ExpertiseH2>
+        <CardContainer>
+          {getExpertise(data)}
+          {/* card container
+          <ExpertiseCard>This is a card</ExpertiseCard>
+          <ExpertiseCard>This is a card</ExpertiseCard>
+          <ExpertiseCard>This is a card</ExpertiseCard> */}
+        </CardContainer>
+      </ExpertiseWrapper>
+    </ExpertiseContainer>
   );
 };
 
@@ -125,22 +108,3 @@ const CardContainer = styled.div`
   background: red;
 `;
 const ExpertiseCard = styled.div``;
-
-// query MyQuery {
-//   allExpertiseJson {
-//     edges {
-//       node {
-//         Title
-//         alt
-//         Description
-//         img {
-//           childrenImageSharp {
-//             fluid {
-//               src
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
